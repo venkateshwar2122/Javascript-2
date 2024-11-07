@@ -1,0 +1,27 @@
+<!--create a button in HTML that toggles its label between "HIDE" and "SHOW" each time it's clicked, without affecting any other elements on the page-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fun(this)" >HIDE</button>
+    <script>
+        function fun(br){
+            if(br.innerHTML=="HIDE"){
+                br.innerHTML = "SHOW"
+            }
+            else{
+                br.innerHTML = "HIDE"
+            }
+            return br                         <!-- this line is optional-->
+           
+        }
+
+    </script>
+    
+</body>
+</html>
