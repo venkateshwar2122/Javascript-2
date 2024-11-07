@@ -28,8 +28,8 @@
         let sr = document.getElementsByTagName("span")        // sfr = span field reference
 
         function fun(op){
-            let a = parseInt(tfr[0].value)
-            let b = parseInt(tfr[1].value)
+            let a = parseInt(tfr[0].value)                    // tfr[0]
+            let b = parseInt(tfr[1].value)                    // tfr[1]
             let r
             switch(op){
                 case "+": r= a+b
@@ -47,7 +47,7 @@
                
             }
 
-            sr[0].innerHTML = r
+            sr[0].innerHTML = r                            // sr[0]
         }
 
 
