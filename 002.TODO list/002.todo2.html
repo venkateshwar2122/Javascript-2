@@ -1,0 +1,130 @@
+<!-- add complete button that deletes row from table1 and add that row in table 2 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter uid" name="uid">
+    <input type="text" placeholder="Enter Task" name="task">
+    <input type="date" name="dl">
+
+    <button onclick="add()">ADD</button>
+    <button onclick="upd()" style="display: none;">Update</button>
+
+    <table> </table>
+
+    <table></table>
+    <script>
+        let a=[]
+        let x=[]
+        let ipr=document.getElementsByTagName("input");
+        let btn=document.getElementsByTagName("button")
+        let tbl1=document.getElementsByTagName("table")[0]
+        let tbl2=document.getElementsByTagName("table")[1]
+        let ind=-999        /* global variable */
+
+        function disp(){
+
+            let s=""
+
+        if(a.length>0){           /* after deletion if no elments in array then header(SNO,USERID,TASK,DEADLINE)row should be deleted */
+
+             s = "<tr><th>SNO</th><th>USER ID</th><th>TASK</th><th>DEADLINE</th><tr>"
+
+             for(let i=0;i<a.length;i++){
+
+                s= s + `<tr><td>${i+1}</td>
+                            <td>${a[i].uid}</td>
+                            <td>${a[i].task}</td>
+                            <td>${a[i].dl}</td>
+                            <td><button onclick="edit(${i})">EDIT</button></td>
+                            <td><button onclick="del(${i})">DELETE</button></td>
+                            <td><button onclick="complete(${i})">COMPLETE</button></td>
+                        </tr>`
+              }
+        }
+
+            tbl1.innerHTML=s
+
+        }
+    function disp2(){
+
+             let y=""
+
+             if(x.length>0){           /* after deletion if no elments in array then header(SNO,USERID,TASK,DEADLINE)row should be deleted */
+
+             y = "<tr><th>SNO</th><th>USER ID</th><th>TASK</th><th>DEADLINE</th><tr>"
+
+            for(let i=0;i<x.length;i++){
+
+                      y= y + `<tr><td>${i+1}</td>
+                         <td>${x[i].uid}</td>
+                         <td>${x[i].task}</td>
+                         <td>${x[i].dl}</td>
+                         <td><button onclick="edit(${i})">EDIT</button></td>
+                         <td><button onclick="del(${i})">DELETE</button></td>
+                         <td><button onclick="complete(${i})">COMPLETE</button></td>
+                         </tr>`
+            }
+          }
+
+       tbl2.innerHTML=y
+}
+
+        function add(){
+            let obj={}
+            for(let i=0;i<ipr.length;i++){
+                obj={...obj,[ipr[i].name]:ipr[i].value}
+                
+                ipr[i].value=""
+            }
+          a.push(obj)
+          disp()       
+        }
+
+        function del(ind){
+            a.splice(ind,1)
+            disp()
+        }
+
+        function edit(i){
+            ipr[0].value=a[i].uid
+            ipr[1].value=a[i].task
+            ipr[2].value=a[i].dl
+
+            btn[0].style.display="none"           /*used to hide the first button(add)) from the user interface. */
+            btn[1].style.display="inline-block"  /* is used to make the second button(update) visible on the user interface.*/
+            ind=i                                 /***************************************** */
+        }
+
+        function upd(){
+            let obj={}
+            for(let i=0;i<ipr.length;i++){
+                obj={...obj,[ipr[i].name]:ipr[i].value}
+                
+                ipr[i].value=""
+            }
+          a[ind]=obj
+          disp()
+          btn[0].style.display="inline-block"
+          btn[1].style.display="none"
+     
+        }
+
+        function complete(i){
+            x.push(a[i])        
+            del(i)
+            disp2()
+         
+        }
+
+
+    
+    </script>
+</body>
+</html>
