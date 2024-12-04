@@ -21,7 +21,7 @@
         let ipr=document.getElementsByTagName("input");
         let btn=document.getElementsByTagName("button")
         let tbl=document.getElementsByTagName("table")[0]
-        let ind=-1
+        let ind=-999        /* global variable....any random value */
 
         let disp=()=>{
 
@@ -47,7 +47,7 @@
 
         }
 
-        let add=()=>{
+        function add(){
             let obj={}
             for(let i=0;i<ipr.length;i++){
                 obj={...obj,[ipr[i].name]:ipr[i].value}
@@ -68,8 +68,8 @@
             ipr[1].value=a[i].task
             ipr[2].value=a[i].dl
 
-            btn[0].style.display="none"
-            btn[1].style.display="inline-block"
+            btn[0].style.display="none"           /*used to hide the first button(add)) from the user interface. */
+            btn[1].style.display="inline-block"  /* is used to make the second button(update) visible on the user interface.*/
             ind=i                                 /***************************************** */
         }
 
