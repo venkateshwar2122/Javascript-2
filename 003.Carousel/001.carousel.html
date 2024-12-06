@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+         /* step 1 */
+        *{
+            margin: 0;
+            padding:0;
+            outline: none;
+        }
+       
+        .con{
+            width:100%;
+            height:100vh;
+            position: relative;
+        }
+        img{
+            width:100%;
+            height:100%;
+        }
+        button{
+            background-color: transparent;
+            color: white;
+            padding:5px 20px;
+        
+        }
+
+        .bnr{
+            position: absolute;
+            top:50%;
+            left:50%;
+            width:40%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            transform: translate(-50%,-50%);
+           
+        }
+
+
+        /* end step 1 */
+
+        /* step2*/
+
+
+        .lt {
+            color: red;
+            position: absolute;
+            top:50%;
+            left:10px;
+            transform:translate(0%,-50%)   /* in x direction 0% in y direction 50% */
+
+        } 
+        .rt {
+            color: red;
+            position: absolute;
+            top:50%;
+            right: 10px;
+            transform:translate(0%,-50%)   /* in x direction 0% in y direction 50% */
+        }
+
+
+        /* end step 2*/
+
+
+    </style>
+</head>
+<body>   
+
+    <!-- step 1-->
+
+
+    <div class="con"> 
+        <img src="https://images.unsplash.com/photo-1542396601-dca920ea2807?q=80&w=1351&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <div class="bnr">
+            <h1>heading text</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, pariatur.</p>
+            <button>know more</button>
+
+        </div>
+
+    </div>
+
+    <!--end step 1-->
+
+    <!-- step 2-->
+
+
+    <button class="lt" onclick="bkw()">&lt;</button>
+    <button class="rt" onclick="fwd()">&gt</button>
+
+
+    <!--step2 end-->
+
+
+    <!--step 3-->
+
+    <script>
+
+        let a = [
+
+        {'img':"https://images.unsplash.com/photo-1542396601-dca920ea2807?q=80&w=1351&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 'h':"HEADING TEXT 1", 'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, pariatur."},
+        {'img':"https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 'h':"HEADING TEXT 2", 'p': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, pariatur."
+        },
+        {'img':"https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 'h':"HEADING TEXT 3", 'p': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, pariatur."
+        },
+        {'img':"https://images.unsplash.com/photo-1542676032-6e468ada2953?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 'h':"HEADING TEXT 4", 'p': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, pariatur."
+    }
+        ]
+
+
+        let imgr = document.getElementsByTagName("img")[0];
+        let hr = document.getElementsByTagName("h1")[0];
+        let pr= document.getElementsByTagName("p")[0];
+
+        let i =0;
+
+        let fwd=()=>{
+            i=(i+1)%a.length
+            imgr.src = a[i].img
+            hr.innerHTML = a[i].h
+            pr.innerHTML = a[i].p
+
+            
+        }
+
+        let bkw=()=>{
+            i = i-1
+            if(i<0){
+                i=3                   /* last image index 3 */
+            }
+            imgr.src = a[i].img
+            hr.innerHTML = a[i].h
+            pr.innerHTML = a[i].p
+
+            
+        }
+
+    </script>
+
+    
+</body>
+</html>
