@@ -1,0 +1,171 @@
+<!--  
+
+Question:
+Create an HTML-based image slider with the following requirements:
+
+HTML and CSS Layout:
+
+The page should have a full-screen image slider (.con) with an overlayed banner (.bnr) displaying a heading, a paragraph, and a button.
+Include left (.lt) and right (.gt) navigation buttons for navigating through the images.
+Display dot indicators (.dotcon) at the bottom, which highlight the current image in the slider.
+JavaScript Functionality:
+
+Create an array of objects (a) with each object containing:
+An image source (img).
+A heading text (h).
+A paragraph (p).
+Implement the following functions:
+fwd: Navigate to the next image. Ensure the transition loops back to the first image after the last.
+bkw: Navigate to the previous image. Ensure the transition loops back to the last image if on the first.
+set(ind): Jump directly to a specific image based on the dot indicator clicked.
+Use className to visually differentiate the active dot (fa-solid fa-circle) from inactive dots (fa-regular fa-circle).
+Responsive Design:
+
+Ensure the layout adapts to different screen sizes using CSS.
+Enhancements:
+
+Add the option to automatically cycle through images every 2 seconds using setInterval (commented out in the script).
+Write the complete implementation and explain how this works.
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+        .con{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .bnr{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            gap:6px;
+            font-size: 20px;
+        }
+        button{
+            padding: 5px 20px;
+            color:red;
+            background-color: transparent;
+        }
+        h1{
+            color: brown;
+        }
+        p{
+            color: darkmagenta;
+        }
+        .lt,.gt{
+            position: absolute;
+            top:50%;
+            font-size: 35px;
+            font-weight: bolder;
+            transform: translateY(-50%);
+        }
+        .lt{
+            left: 10px;
+        }
+        .gt{
+            right: 10px;
+        }
+        .dotcon{
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <img src="image1.jpg" alt="">
+        <div class="bnr">
+            <h1>Heading Text</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!</p>
+            <button>KNOW MORE</button>
+        </div>
+        <button class="lt" onclick="bkw()">&lt;</button>
+        <button class="gt" onclick="fwd()">&gt;</button>
+
+        <div class="dotcon">
+            <i class="fa-regular fa-circle" onclick="set(0)"></i>
+            <i class="fa-regular fa-circle" onclick="set(1)"></i>
+            <i class="fa-regular fa-circle" onclick="set(2)"></i>
+            <i class="fa-regular fa-circle" onclick="set(3)"></i>
+            <i class="fa-regular fa-circle" onclick="set(4)"></i>
+            <i class="fa-regular fa-circle" onclick="set(5)"></i>
+        </div>
+    </div>
+    <script>
+        let a=[
+            {'img':"image1.jpg",'h':"Heading Text",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-1"},
+            {'img':"image2.jpg",'h':"Heading Text-2",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-2"},
+            {'img':"image3.jpg",'h':"Heading Text-3",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-3"},
+            {'img':"image4.jpg",'h':"Heading Text-4",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-4"},
+            {'img':"image5.jpg",'h':"Heading Text-5",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-5"},
+            {'img':"image6.jpg",'h':"Heading Text-6",'p':"Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nisi!-6"},
+        ]
+
+        let imgr=document.getElementsByTagName("img")[0]
+        let hr=document.getElementsByTagName("h1")[0]
+        let pr=document.getElementsByTagName("p")[0]
+        let ir=document.getElementsByTagName("i")
+        let i=0
+
+        let fwd=()=>{
+
+            ir[i].className="fa-regular fa-circle"
+            i=(i+1)%a.length
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+            ir[i].className="fa-solid fa-circle"
+        }
+        let bkw=()=>{
+            ir[i].className="fa-regular fa-circle"
+            i=i-1
+            if(i<0){
+                i=5
+            }
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+            ir[i].className="fa-solid fa-circle"
+        }
+
+        let set=(ind)=>{
+            ir[i].className="fa-regular fa-circle"
+            i=ind
+        
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+            ir[i].className="fa-solid fa-circle"
+        }
+       // setInterval(fwd,2000)
+    </script>
+</body>
+</html>
+
+
