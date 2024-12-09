@@ -1,0 +1,42 @@
+<!--
+
+#to create a new html element
+
+document.createElement("tag")
+-> it will return element reference
+
+#to add new element as a child for some other element
+
+parent_element_reference.appendChild(child_ele_ref)
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="con">
+    </div>
+    <button onclick="fun()">ADD</button>
+
+    <script>
+        let con = document.getElementsByClassName("con")[0]
+        let fun=()=>{
+            let ne = document.createElement("input")
+            ne.type="text"
+            ne.placeholder="enter data"
+            console.log(ne)
+            con.appendChild(ne)
+        }
+    </script>
+
+
+    
+</body>
+</html>
