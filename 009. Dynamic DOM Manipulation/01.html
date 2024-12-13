@@ -1,1 +1,90 @@
-d
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=input, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter text">
+    <button>ADD</button>
+    <ul>
+
+    </ul>
+    <script>
+        let ipr = document.getElementsByTagName("input")[0]
+        let btnr = document.getElementsByTagName("button")[0]
+        let ulr = document.getElementsByTagName("ul")[0]
+
+        let er = null   /* we are using this as global variable for implementing del function */
+
+        btnr.addEventListener("click", add)
+        function add(){
+            let lir=document.createElement("li")          // li lement refernce.... create li element because ul ke inside li aata hai
+            let spanr=document.createElement("span")      //span element refernce...... and li ke inside span create kar rahe hai
+            spanr.innerHTML=ipr.value
+            lir.appendChild(spanr)       // span is child of li
+            ulr.appendChild(lir)        // li is child of ul
+            ipr.value=""
+
+            //create edit btn inside lir
+
+            let edtbtnr = document.createElement("button")           // edit button reference
+            edtbtnr.innerHTML="EDIT"
+            lir.appendChild(edtbtnr)
+
+            //create delete button inside lir
+
+            let delbtnr = document.createElement("button")       // delete button refernce
+            delbtnr.innerHTML="DELETE"
+            lir.appendChild(delbtnr)
+
+
+            //now we hove to implement delete button function
+
+            delbtnr.addEventListener("click", ()=>del(lir))   /* here we have used arrow funtion ()=> because this delete button is inside add function..therefore to access particular delete button we are using arrow function   */
+
+            //now we have to implement edit button function
+
+            edtbtnr.addEventListener("click", ()=>edt(lir))
+
+        }
+
+
+        function del(er){            /* here lir value is passed to global variable er which is lir=er */
+
+          //  console.log(er)
+
+          ulr.removeChild(er)
+
+        }
+
+        function edt(lir){   /* sr here is local variable which is catching lir whichg is lir=sr */
+            //console.log(lir)
+            const spanElement = lir.querySelector('span'); /* now i am acccesing span tag inside lir reference */
+            ipr.value = spanElement.innerHTML
+            btnr.innerHTML="UPDATE"   /* text of button which is ADD is changed to UPDATE */    
+
+            btnr.removeEventListener("click", add)   /* removoing add fxnality from btnr because now that button has to implement update functiomn functionality  */
+
+            btnr.addEventListener("click",upd)
+            er =              /* doubt */
+
+        }
+
+        function upd(){      /* doubt is whole upd function */
+        
+            er.innerHTML = ipr.value
+            btnr.innerHTML="ADD"
+            btnr.removeEventListener("click",upd)
+            btnr.addEventListener("click",add)
+            ipr.value=""
+
+        }
+
+        
+
+
+    </script>
+</body>
+</html>
