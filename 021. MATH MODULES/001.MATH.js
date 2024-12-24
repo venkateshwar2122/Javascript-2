@@ -20,4 +20,4 @@ console.log(Math.ceil(Math.random()*9999+10000)) // remove decimal random 5 digi
 16470.142337519657
 17632
 
-/
+*/
