@@ -1,0 +1,46 @@
+<!-- 
+ AXIOS CDN LINK:
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ -->
+
+ <!--FAKE API LINK
+
+https://jsonplaceholder.typicode.com/comments
+ 
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ </head>
+ <body>
+    <table>
+    </table>
+    <script>
+        let tr = document.getElementsByTagName("table")[0]
+
+        axios.get("https://jsonplaceholder.typicode.com/comments").then((res)=>{
+          console.log(res)
+          console.log(res.data)
+
+          let a = res.data
+          let s = `<tr><th>ID</th><th>NAME</th><th>EMAIL</th><th>BODY</th></tr>`
+
+          for(let i=0;i<a.length;i++){
+            s = s+`<tr><td>${a[i].id}</td>
+                        <td>${a[i].name}</td>
+                        <td>${a[i].email}</td>
+                        <td>${a[i].body}</td>
+                    <tr>`
+          }
+          tr.innerHTML=s
+        })
+   
+    </script>
+  
+ </body>
+ </html>
