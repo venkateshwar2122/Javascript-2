@@ -1,3 +1,11 @@
+SYNTAX:
+
+promise_object.then((result)=>{
+                             statments
+                          }).catch((err)=>{
+                             statements
+                          })
+
 /*   A Promise in JavaScript is a built-in object that represents the eventual completion (or
  failure) of an asynchronous operation and its resulting value. It is used to handle 
  asynchronous tasks, such as API calls, file reading, or timer-based operations, in a 
