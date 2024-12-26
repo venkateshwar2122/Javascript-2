@@ -200,6 +200,8 @@ console.log(regex.test('e'));  // false (vowel doesn't match)
 
 
         Explanation of Example Results:
+        let regex = /^[^aeiou]*$/;
+
         regex.test('bcd') returns true because there are no vowels in the string.
         regex.test('apple') returns false because the string contains vowels ('a' and 'e').
         regex.test('xyz') returns true because there are no vowels.
